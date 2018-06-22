@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="js," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="正在缓冲99%" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="前言 JSON是 js 的一个严格的子集，利用了 js 中的一些模式来表示结构化数据。关于JSON，最重要的是要理解它是一种数据格式，不是一种编程语言。虽然具有相同的语法格式，但 JSON 并不属于 js。而且，并不只有 js 才使用 JSON，比较 JSON 只是一种数据格式。很多编程语言都有针对 JSON 的解析器和序列化器。 JSON对象的方法JSON对象有两个方法：stringify()和">
+<meta name="keywords" content="js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你真的会用JSON.stringify吗">
+<meta property="og:url" content="http://yoursite.com/2018/05/10/你真的会用JSON-stringify吗/index.html">
+<meta property="og:site_name" content="正在缓冲99%">
+<meta property="og:description" content="前言 JSON是 js 的一个严格的子集，利用了 js 中的一些模式来表示结构化数据。关于JSON，最重要的是要理解它是一种数据格式，不是一种编程语言。虽然具有相同的语法格式，但 JSON 并不属于 js。而且，并不只有 js 才使用 JSON，比较 JSON 只是一种数据格式。很多编程语言都有针对 JSON 的解析器和序列化器。 JSON对象的方法JSON对象有两个方法：stringify()和">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/json/json.png">
+<meta property="og:updated_time" content="2018-06-20T13:30:25.625Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="你真的会用JSON.stringify吗">
+<meta name="twitter:description" content="前言 JSON是 js 的一个严格的子集，利用了 js 中的一些模式来表示结构化数据。关于JSON，最重要的是要理解它是一种数据格式，不是一种编程语言。虽然具有相同的语法格式，但 JSON 并不属于 js。而且，并不只有 js 才使用 JSON，比较 JSON 只是一种数据格式。很多编程语言都有针对 JSON 的解析器和序列化器。 JSON对象的方法JSON对象有两个方法：stringify()和">
+<meta name="twitter:image" content="http://yoursite.com/images/json/json.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/10/你真的会用JSON-stringify吗/"/>
+
+
+
+
+
+  <title>你真的会用JSON.stringify吗 | 正在缓冲99%</title>
+  
+
+
+
+
+
+
+
+
+
+  <!-- 
+  <script type="text/javascript"
+  color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="https://cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+   -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <!-- <div class="headband"></div> -->
+    <!-- <a href="https://github.com/qyhever"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a> -->
+    <a href="https://github.com/qyhever" class="github-corner" aria-label="View source on Github"><svg width="92" height="92" viewBox="0 0 250 250" style="fill:#151513;color:#fff;position:absolute;top:0;border:0;right:0" aria-hidden="true"><path d="M0 0 115 115 130 115 142 142 250 250 250 0Z"></path><path d="M128.3 109C113.8 99.7 119 89.6 119 89.6 122 82.7 120.5 78.6 120.5 78.6 119.2 72 123.4 76.3 123.4 76.3 127.3 80.9 125.5 87.3 125.5 87.3 122.9 97.6 130.6 101.9 134.4 103.2" fill="currentColor" style="transform-origin:130px 106px" class="octo-arm"></path><path d="M115 115C114.9 115.1 118.7 116.5 119.8 115.4L133.7 101.6C136.9 99.2 139.9 98.4 142.2 98.6 133.8 88 127.5 74.4 143.8 58 148.5 53.4 154 51.2 159.7 51 160.3 49.4 163.2 43.6 171.4 40.1 171.4 40.1 176.1 42.5 178.8 56.2 183.1 58.6 187.2 61.8 190.9 65.4 194.5 69 197.7 73.2 200.1 77.6 213.8 80.2 216.3 84.9 216.3 84.9 212.7 93.1 206.9 96 205.4 96.6 205.1 102.4 203 107.8 198.3 112.5 181.9 128.9 168.3 122.5 157.7 114.1 157.9 116.9 156.7 120.9 152.7 124.9L141 136.5C139.8 137.7 141.6 141.9 141.8 141.8Z" fill="currentColor" class="octo-body"></path></svg></a>
+    <style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">正在缓冲99%</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Qin Yonghao's Personal Website</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+<div class="player">
+	<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=1304257&auto=0&height=66"></iframe>
+</div>
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/10/你真的会用JSON-stringify吗/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="query">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="正在缓冲99%">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">你真的会用JSON.stringify吗</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-10T20:10:05+08:00">
+                2018-05-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,459 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><img src="/images/json/json.png" alt="json"></p>
+<p>JSON是 js 的一个严格的子集，利用了 js 中的一些模式来表示结构化数据。关于JSON，最重要的是要理解它是一种数据格式，不是一种编程语言。虽然具有相同的语法格式，但 JSON 并不属于 js。而且，并不只有 js 才使用 JSON，比较 JSON 只是一种数据格式。很多编程语言都有针对 JSON 的解析器和序列化器。</p>
+<h3 id="JSON对象的方法"><a href="#JSON对象的方法" class="headerlink" title="JSON对象的方法"></a>JSON对象的方法</h3><p>JSON对象有两个方法：<code>stringify()</code>和<code>parse()</code>，分别用于将 js 对象序列化为 JSON 字符串 和 将 JSON 字符串解析为原生 js 值。</p>
+<p>这两个方法，我们经常使用，可以说只要涉及到数据传输与存储，大部分情况都离不开这两个方法。</p>
+<p>在开发过程中，可能是像下面这样使用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> user = &#123;<span class="attr">name</span>: <span class="string">'tom'</span>, <span class="attr">age</span>: <span class="number">18</span>&#125;;</span><br><span class="line">localStorage.setItem(<span class="string">'user'</span>, <span class="built_in">JSON</span>.stringify(user));</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">'get'</span>, <span class="string">'...'</span>, <span class="literal">true</span>);</span><br><span class="line">xhr.send(<span class="literal">null</span>);</span><br><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (xhr.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> ((xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) || xhr.status === <span class="number">304</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> data = <span class="built_in">JSON</span>.parse(xhr.reponseText);</span><br><span class="line">      <span class="comment">// do...</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>上面的JSON对象方法使用很常见，不过，这只是这两个方法最简单的使用，它们还有更强大的功能。</p>
+<p>默认情况下，<code>JSON.stringify()</code>输出的 JSON 字符串不包含任何空格字符串或缩进。实际上，<code>JSON.stringify()</code>处理要序列化的 js 对象外，还可以接受另外两个参数，这两个参数用于指定不同的方式序列化 js 对象，第一个参数是过滤器，可以数组或者函数；第二个参数是一个选项，表示是否在 JSON 字符串中保留缩进。单独或组合使用这两个参数，可以更全面深入的控制 JSON 的序列化。</p>
+<h4 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h4><h5 id="过滤结果"><a href="#过滤结果" class="headerlink" title="过滤结果"></a>过滤结果</h5><p>如果过滤器是数组，那么 <code>JSON.stringify()</code>的结果中将只包含数组中列出的属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> js = &#123;</span><br><span class="line">  title: <span class="string">'Scripting language'</span>,</span><br><span class="line">  author: <span class="string">'Brendan Eich'</span>,</span><br><span class="line">  birth: <span class="number">1995</span>,</span><br><span class="line">  universalStandard: [<span class="string">'es3'</span>, <span class="string">'es2015'</span>],</span><br><span class="line">  latestStandard: <span class="string">'es2017'</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> jsonText = <span class="built_in">JSON</span>.stringify(js, [<span class="string">'title'</span>, <span class="string">'birth'</span>]);</span><br><span class="line"><span class="comment">// "&#123;"title":"Scripting language","birth":1995&#125;"</span></span><br></pre></td></tr></table></figure>
+<p>上面的<code>JSON.stringify()</code>的第二个参数是一个数组，其中包含两个字符串：“title”、“birth”。这两个属性与将要序列化的对象中的属性是对应的，因此在返回的结果字符串中，就只会包含这两个属性。利用这个特性我们可以实现数据的过滤，扔掉一些不需要的数据。</p>
+<p>如果第二个参数是函数，行为会稍有不同。传入的函数接收两个参数，属性（键）名和属性值。根据键名可以知道应该如何处理要序列化的对象中的属性。属性名只能是字符串，而在值并非键值对的结构时，键名可以是空字符串。为了改变序列化对象的结果，函数的返回值就是相应键的值。如果返回<code>undefined</code>，那么相应的属性会被忽略。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jsonText = <span class="built_in">JSON</span>.stringify(js, <span class="function"><span class="keyword">function</span>(<span class="params">key, value</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span>(key) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'universalStandard'</span>: <span class="keyword">return</span> value.join(<span class="string">','</span>);</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'birth'</span>: <span class="keyword">return</span> <span class="number">2000</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'author'</span>: <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">    <span class="keyword">default</span>: <span class="keyword">return</span> value;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// "&#123;"title":"Scripting language","birth":2000,"universalStandard":"es3,es2015","latestStandard":"es2017"&#125;"</span></span><br></pre></td></tr></table></figure>
+<p>经过回调函数的处理，可以对数据做一些初始化处理。</p>
+<h5 id="字符串缩进"><a href="#字符串缩进" class="headerlink" title="字符串缩进"></a>字符串缩进</h5><p><code>JSON.stringify()</code>的第三个参数用于控制结果中的缩进和空白符。如果这个参数是一个数值，那它表示的是每个级别缩进的空格数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jsonText = <span class="built_in">JSON</span>.stringify(js, <span class="literal">null</span>, <span class="number">4</span>);</span><br><span class="line"><span class="string">"&#123;</span></span><br><span class="line"><span class="string">    "</span>title<span class="string">": "</span>Scripting language<span class="string">",</span></span><br><span class="line"><span class="string">    "</span>author<span class="string">": "</span>Brendan Eich<span class="string">",</span></span><br><span class="line"><span class="string">    "</span>birth<span class="string">": 1995,</span></span><br><span class="line"><span class="string">    "</span>universalStandard<span class="string">": [</span></span><br><span class="line"><span class="string">        "</span>es3<span class="string">",</span></span><br><span class="line"><span class="string">        "</span>es2015<span class="string">"</span></span><br><span class="line"><span class="string">    ],</span></span><br><span class="line"><span class="string">    "</span>latestStandard<span class="string">": "</span>es2017<span class="string">"</span></span><br><span class="line"><span class="string">&#125;"</span></span><br></pre></td></tr></table></figure>
+<p>第三个参数传入数值后，结果字符串中插入了换行符提高了可读性。最大的缩进为10，大于10的值将自动转换为10。</p>
+<p>如果缩进参数是一个字符串，那么这个字符串在 JSON 字符串被用作缩进字符。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jsonText = <span class="built_in">JSON</span>.stringify(js, <span class="literal">null</span>, <span class="string">'--'</span>);</span><br><span class="line"><span class="string">"&#123;</span></span><br><span class="line"><span class="string">--"</span>title<span class="string">": "</span>Scripting language<span class="string">",</span></span><br><span class="line"><span class="string">--"</span>author<span class="string">": "</span>Brendan Eich<span class="string">",</span></span><br><span class="line"><span class="string">--"</span>birth<span class="string">": 1995,</span></span><br><span class="line"><span class="string">--"</span>universalStandard<span class="string">": [</span></span><br><span class="line"><span class="string">----"</span>es3<span class="string">",</span></span><br><span class="line"><span class="string">----"</span>es2015<span class="string">"</span></span><br><span class="line"><span class="string">--],</span></span><br><span class="line"><span class="string">--"</span>latestStandard<span class="string">": "</span>es2017<span class="string">"</span></span><br><span class="line"><span class="string">&#125;"</span></span><br></pre></td></tr></table></figure>
+<h5 id="toJSON-方法"><a href="#toJSON-方法" class="headerlink" title="toJSON()方法"></a>toJSON()方法</h5><p>可以在对象上调用<code>toJSON()</code>方法，返回其自身的 JSON 数据格式，可以为任何对象添加<code>toJSON()</code>方法，自定义对象进行序列化的需求。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> js = &#123;</span><br><span class="line">  title: <span class="string">'Scripting language'</span>,</span><br><span class="line">  author: <span class="string">'Brendan Eich'</span>,</span><br><span class="line">  birth: <span class="number">1995</span>,</span><br><span class="line">  universalStandard: [<span class="string">'es3'</span>, <span class="string">'es2015'</span>],</span><br><span class="line">  latestStandard: <span class="string">'es2017'</span>,</span><br><span class="line">  toJSON: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.title;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> jsonText = <span class="built_in">JSON</span>.stringify(js);</span><br><span class="line"><span class="comment">// "Scripting language"</span></span><br></pre></td></tr></table></figure>
+<h4 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h4><p><code>JSON.parse()</code>方法可以接收第二个参数，该参数是一个函数，将在每个键值对上调用。一般，把<code>JSON.stringify()</code>的回调函数称为 替换（过滤）函数 ，把这里的函数称为 还原函数。这两个函数的使用方法是相同的，接收键和值两个参数，并且都需要返回一个值。</p>
+<p>如果返回<code>undefined</code>，则从结果中删除相应的键；如果返回其他值，则将该值插入到结果中。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> js = &#123;</span><br><span class="line">  title: <span class="string">'Scripting language'</span>,</span><br><span class="line">  author: <span class="string">'Brendan Eich'</span>,</span><br><span class="line">  birth: <span class="number">1995</span>,</span><br><span class="line">  universalStandard: [<span class="string">'es3'</span>, <span class="string">'es2015'</span>],</span><br><span class="line">  latestStandard: <span class="string">'es2017'</span>,</span><br><span class="line">  currentTime: <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> jsonText = <span class="built_in">JSON</span>.stringify(js);</span><br><span class="line"><span class="keyword">var</span> jsCopy = <span class="built_in">JSON</span>.parse(jsonText, <span class="function"><span class="keyword">function</span>(<span class="params">key, value</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span>(key) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'currentTime'</span>: <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Date</span>(value);</span><br><span class="line">    <span class="keyword">default</span>: <span class="keyword">return</span> value;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>对于Date对象，很适合用还原函数来处理。</p>
+<p>对象经过序列化，在进行还原解析可以用于对象的深拷贝，不过此方式有一定缺陷，所有函数及原型成员会被有意忽略，不体现在结果中，值为<code>undefined</code>的任何属性会跳过。</p>
+<h3 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h3><p>JSON 是一个轻量级的数据格式，可以简化表示复杂数据结构的工作量。JSON 使用 js 语法的子集表示对象、数组、字符串、数值、布尔值和null。相对于XML，JSON 更高效更便利，成为当前主流的数据传输格式。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:17px;">------------- 本文结束<i class="fa fa-paw"></i>感谢您的阅读 -------------</div>
+    
+</div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/js/" rel="tag">
+              <i class="fa fa-tag"></i>
+              js
+            </a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/10/函数节流与防抖/" rel="next" title="函数节流与防抖">
+                <i class="fa fa-chevron-left"></i> 函数节流与防抖
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/05/函数绑定与函数柯里化/" rel="prev" title="函数绑定与函数柯里化">
+                函数绑定与函数柯里化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="query" />
+            
+              <p class="site-author-name" itemprop="name">query</p>
+              <p class="site-description motion-element" itemprop="description">不进则退</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com" target="_blank" title="GitHub">
+                      GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im" target="_blank" title="掘金">
+                      掘金</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://segmentfault.com" target="_blank" title="SegmentFault">
+                      SegmentFault</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.csdn.net" target="_blank" title="csdn">
+                      csdn</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://cnodejs.org" target="_blank" title="cnode">
+                      cnode</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.52dreamsky.cn" target="_blank" title="梦想天空">
+                      梦想天空</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.html-js.com" target="_blank" title="前端乱炖">
+                      前端乱炖</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.w3cplus.com" target="_blank" title="w3cplus">
+                      w3cplus</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ruanyifeng.com" title="阮一峰" target="_blank">阮一峰</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.zhangxinxu.com" title="张鑫旭" target="_blank">张鑫旭</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://i5ting.com" title="i5ting" target="_blank">i5ting</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.alloyteam.com/nav/" title="web前端导航" target="_blank">web前端导航</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://taobaofed.org" title="Taobao FED" target="_blank">Taobao FED</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.36zhen.com/t?id=3448" title="前端书籍" target="_blank">前端书籍</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://f2er.club" title="醉牛前端" target="_blank">醉牛前端</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON对象的方法"><span class="nav-number">2.</span> <span class="nav-text">JSON对象的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#序列化"><span class="nav-number">2.1.</span> <span class="nav-text">序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#过滤结果"><span class="nav-number">2.1.1.</span> <span class="nav-text">过滤结果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字符串缩进"><span class="nav-number">2.1.2.</span> <span class="nav-text">字符串缩进</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#toJSON-方法"><span class="nav-number">2.1.3.</span> <span class="nav-text">toJSON()方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解析"><span class="nav-number">2.2.</span> <span class="nav-text">解析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结尾"><span class="nav-number">3.</span> <span class="nav-text">结尾</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">query</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">35.4k</span>
+  
+</div>
+
+
+  <!-- <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div> -->
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/global.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
