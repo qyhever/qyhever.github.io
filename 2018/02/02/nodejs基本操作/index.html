@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="正在缓冲99%">
 <meta property="og:description" content="Node.js Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。  Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。  Node.js 的包管理器 npm，是全球最大的开源库生态系统。 官网 中文网  Node的优缺点 优点 适合高并发、I/O密集型应用（如聊天室、表单收集） 统一语言，有问题可以从前端一直追到数据库   缺点">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-21T00:27:44.087Z">
+<meta property="og:updated_time" content="2018-06-29T14:31:08.806Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nodejs基本操作">
 <meta name="twitter:description" content="Node.js Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。  Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。  Node.js 的包管理器 npm，是全球最大的开源库生态系统。 官网 中文网  Node的优缺点 优点 适合高并发、I/O密集型应用（如聊天室、表单收集） 统一语言，有问题可以从前端一直追到数据库   缺点">
@@ -295,7 +295,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/02/nodejs基本操作/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="query">
+      <meta itemprop="name" content="pink">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -511,7 +511,7 @@
 </blockquote>
 </li>
 <li><p>异步写法</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">copy</span>(<span class="params">src, dist</span>) </span>&#123;</span><br><span class="line">  fs.readFile(src, (err, content) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">console</span>.log(<span class="string">'readFile fail'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    fs.writeFile(dist, content, (err) =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">console</span>.log(<span class="string">'writeFile fail'</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'copy success'</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">main</span>(<span class="params">argv</span>) </span>&#123;</span><br><span class="line">  copy(argv[<span class="number">0</span>], argv[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line">main(process.argv.slice(<span class="number">2</span>));</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">copy</span>(<span class="params">src, dist</span>) </span>&#123;</span><br><span class="line">  fs.readFile(src, (err, content) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">console</span>.log(<span class="string">'readFile fail'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    fs.writeFile(dist, content, (err) =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">console</span>.log(<span class="string">'writeFile fail'</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'copy success'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">main</span>(<span class="params">argv</span>) </span>&#123;</span><br><span class="line">  copy(argv[<span class="number">0</span>], argv[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line">main(process.argv.slice(<span class="number">2</span>));</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>流式操作</p>
 <p>数据流：一边读取一边处理更加高效</p>
@@ -712,9 +712,9 @@
             
               <img class="site-author-image" itemprop="image"
                 src="/images/avatar.gif"
-                alt="query" />
+                alt="pink" />
             
-              <p class="site-author-name" itemprop="name">query</p>
+              <p class="site-author-name" itemprop="name">pink</p>
               <p class="site-description motion-element" itemprop="description">不进则退</p>
           </div>
 
@@ -893,7 +893,7 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">query</span>
+  <span class="author" itemprop="copyrightHolder">pink</span>
 
   
     <span class="post-meta-divider">|</span>

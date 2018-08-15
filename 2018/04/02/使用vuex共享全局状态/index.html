@@ -99,7 +99,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://vuex.vuejs.org/vuex.png">
 <meta property="og:image" content="http://yoursite.com/images/vuex/vuex-devtools.png">
-<meta property="og:updated_time" content="2018-06-20T13:30:25.625Z">
+<meta property="og:updated_time" content="2018-06-29T14:17:28.698Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用vuex共享全局状态">
 <meta name="twitter:description" content="什么是 VuexVuex 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。状态可以简单理解为数据，如果多个组件需要用到某些数据，有两种方法可以实现非父子组件的通信，事件总线和 Vuex。在数据少的情况下可以使用事件总线机制，当数据复杂起来时，应该考虑使用 Vuex 来做数据共享。 使用 Vuex v">
@@ -298,7 +298,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/02/使用vuex共享全局状态/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="query">
+      <meta itemprop="name" content="pink">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -427,8 +427,10 @@
 <li>state.js：定义初始 state（状态 或 数据）</li>
 <li>getters.js：获取从 state 中派生出的一些状态</li>
 <li>mutation-types.js：单独存放 mutation 事件类型名字</li>
-<li>mutations.js：根级别的 mutation，用于通过 commit 调用对应方法，来修改状态</li>
-<li>actions.js：根级别的 action，用于通过 dispatch 触发对应方法，来commit mutation        </li>
+<li>mutations.js：根级别的 mutation，用于通过 commit 调用对应方法，来修改状态<ol start="6">
+<li>actions.js：根级别的 action，用于通过 dispatch 触发对应方法，来commit mutation    </li>
+</ol>
+</li>
 </ol>
 </li>
 <li><p>在 store.js 文件中，组装模块并导出 store</p>
@@ -469,7 +471,7 @@
 </ol>
 <h3 id="mutation"><a href="#mutation" class="headerlink" title="mutation"></a>mutation</h3><p>Vuex 中通过提交 mutation 来更新状态，mutaion 非常类似于事件：每个 mutation都有一个字符串的 <strong>事件类型（type）</strong>和一个<strong>回调函数（callback）</strong>，这个回调函数就是用来变更状态的地方，有两个参数：state 和 payload</p>
 <p>mutation 可以简单理解为 函数（方法），类似于组件 methods 中定义的方法，通过在组件中调用 mutaion 来变更状态。两个参数，state 用来获取 store 中的状态，payload 是在组件中调用 mutation 传入的参数</p>
-<p>因为 mutation 的名字是字符串，且不可改变，一般做法是单独放在 mutation-types.js 文件中，便于维护，把字符串定义为变量，在 IDE 中也会有相应的智能提示</p>
+<p>因为 mutation 的名字是字符串，且不可改变，一般做法是单独放在 mutation-types.js 文件中，便于维护，把字符串定义为常量，在 IDE 中也会有相应的智能提示</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// mutation-types.js</span></span><br><span class="line"><span class="keyword">export</span> ADD_COUNT_ONE = <span class="string">'ADD_COUNT_ONE'</span></span><br><span class="line"><span class="keyword">export</span> ADD_COUNT_CUSTOM = <span class="string">'ADD_COUNT_CUSTOM'</span></span><br><span class="line"><span class="keyword">export</span> TOGGLE_TODO = <span class="string">'TOGGLE_TODO'</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// mutations.js</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> type <span class="keyword">from</span> <span class="string">'./mutation-types'</span></span><br><span class="line"><span class="keyword">const</span> mutations = &#123;</span><br><span class="line">  [type.ADD_COUNT_ONE] (state) &#123;</span><br><span class="line">    state.count += <span class="number">1</span></span><br><span class="line">  &#125;,</span><br><span class="line">  [type.ADD_COUNT_CUSTOM] (state, n) &#123;</span><br><span class="line">    state.count += n</span><br><span class="line">  &#125;,</span><br><span class="line">  [type.TOGGLE_TODO] (state, id) &#123;</span><br><span class="line">    state.todos.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (item.id === id) &#123;</span><br><span class="line">        item.done = !item.done</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> mutations</span><br></pre></td></tr></table></figure>
 <p>在组件中提交 mutation</p>
@@ -627,9 +629,9 @@
             
               <img class="site-author-image" itemprop="image"
                 src="/images/avatar.gif"
-                alt="query" />
+                alt="pink" />
             
-              <p class="site-author-name" itemprop="name">query</p>
+              <p class="site-author-name" itemprop="name">pink</p>
               <p class="site-description motion-element" itemprop="description">不进则退</p>
           </div>
 
@@ -808,7 +810,7 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">query</span>
+  <span class="author" itemprop="copyrightHolder">pink</span>
 
   
     <span class="post-meta-divider">|</span>
