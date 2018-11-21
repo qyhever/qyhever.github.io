@@ -1934,7 +1934,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #dd7938;
+  background: #0b18ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3055,7 +3055,7 @@ body::-webkit-scrollbar-track {
   border-radius: 12px;
 }
 * {
-  cursor: url("/blog/images/cursor/sword.png"), auto;
+  cursor: url("/images/cursor/sword.png"), auto;
 }
 .player {
   position: fixed;
@@ -3077,7 +3077,7 @@ code {
   font-family: consolas;
 }
 .header {
-  background: url("/blog/images/header-bg.jpg") center;
+  background: url("/images/header-bg.jpg") center;
   background-size: cover;
 }
 .header-inner {
@@ -3140,7 +3140,7 @@ a:hover {
   color: #2581d2;
 }
 .sidebar {
-  background: url("/blog/images/sidebar-bg.png");
+  background: url("/images/sidebar-bg.png");
   background-size: cover;
   background-position: center;
   box-shadow: unset;
