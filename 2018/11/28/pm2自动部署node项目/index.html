@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="正在缓冲99%">
 <meta property="og:description" content="pm2使用 node 命令启动项目一般只在开发环境使用，目前线上部署使用最多的部署工具有 pm2 和 forever 两种，相对来说，pm2 的功能更完整些。 项目部署之前上线项目一直都是粗暴操作，在服务器端 git pull 最新代码后，安装依赖，再启动… 确实，看着就累 自从发现 pm2 自动部署后，直接一行命令完成远程部署（自动部署的还可以使用 jenkins 构建工具来做） 安装确保 gi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-28T16:28:17.252Z">
+<meta property="og:updated_time" content="2018-11-30T14:56:19.994Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pm2自动部署node项目">
 <meta name="twitter:description" content="pm2使用 node 命令启动项目一般只在开发环境使用，目前线上部署使用最多的部署工具有 pm2 和 forever 两种，相对来说，pm2 的功能更完整些。 项目部署之前上线项目一直都是粗暴操作，在服务器端 git pull 最新代码后，安装依赖，再启动… 确实，看着就累 自从发现 pm2 自动部署后，直接一行命令完成远程部署（自动部署的还可以使用 jenkins 构建工具来做） 安装确保 gi">
@@ -375,7 +375,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  477 字
+                  568 字
                 </span>
               
 
@@ -438,6 +438,15 @@
 </li>
 <li><p>执行部署命令，服务器没有更新远程代码</p>
 <p>解决方法：手动 git pull，在 post-deploy 字段中加上 git pull</p>
+</li>
+<li><p>在执行部署命令时，会多次要求输入密码</p>
+<p>解决方法：设置 ssh 免密码登录</p>
+<ul>
+<li>本地生成 ssh：<code>ssh-keygen -t rsa -C &quot;your_email@example.com&quot;</code></li>
+<li>查看公钥：路径 C://用户/xxx/.ssh/id_rsa.pub</li>
+<li>服务器根目录新建 .ssh/authorized_keys，一般通过 ssh 远程连接后，会自动生成</li>
+<li>将 id_rsa.pub 中的内容复制到 authorized_keys</li>
+</ul>
 </li>
 </ul>
 
@@ -750,7 +759,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">37.6k</span>
+    <span title="Site words total count">37.7k</span>
   
 </div>
 
