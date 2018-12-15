@@ -76,7 +76,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT,html,css,js,nodejs,qyhever" />
+  <meta name="keywords" content="环境配置," />
 
 
 
@@ -89,16 +89,22 @@
 
 
 
-<meta name="description" content="不进则退">
-<meta property="og:type" content="website">
-<meta property="og:title" content="正在缓冲99%">
-<meta property="og:url" content="http://qyhever.top/archives/2017/11/index.html">
+<meta name="description" content="Jenkinsjenkins 是一个开源软件项目，是基于 java 开发的一种持续集成工具，用于监控持续重复的工作，旨在提供一个开放易用的软件平台，使软件的持续集成变成可能。 在开发过程中，打包上线一直都是手动命令，上传到服务器，效率低也很容易出错。可以使用 Jenkins 把打包过程自动化，提高效率，同时减少错误。 安装Jenkins 下载地址，选择 linux-x64.tar.gz 包，下载需">
+<meta name="keywords" content="环境配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jenkins自动部署">
+<meta property="og:url" content="http://qyhever.top/2018/12/16/jenkins自动部署/index.html">
 <meta property="og:site_name" content="正在缓冲99%">
-<meta property="og:description" content="不进则退">
+<meta property="og:description" content="Jenkinsjenkins 是一个开源软件项目，是基于 java 开发的一种持续集成工具，用于监控持续重复的工作，旨在提供一个开放易用的软件平台，使软件的持续集成变成可能。 在开发过程中，打包上线一直都是手动命令，上传到服务器，效率低也很容易出错。可以使用 Jenkins 把打包过程自动化，提高效率，同时减少错误。 安装Jenkins 下载地址，选择 linux-x64.tar.gz 包，下载需">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://qyhever.top/2018/12/16/jenkins自动部署/jenkins-home.jpg">
+<meta property="og:image" content="http://qyhever.top/2018/12/16/jenkins自动部署/jenkins-create-task.jpg">
+<meta property="og:image" content="http://qyhever.top/2018/12/16/jenkins自动部署/jenkins-task-config.png">
+<meta property="og:updated_time" content="2018-12-15T18:23:25.704Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="正在缓冲99%">
-<meta name="twitter:description" content="不进则退">
+<meta name="twitter:title" content="jenkins自动部署">
+<meta name="twitter:description" content="Jenkinsjenkins 是一个开源软件项目，是基于 java 开发的一种持续集成工具，用于监控持续重复的工作，旨在提供一个开放易用的软件平台，使软件的持续集成变成可能。 在开发过程中，打包上线一直都是手动命令，上传到服务器，效率低也很容易出错。可以使用 Jenkins 把打包过程自动化，提高效率，同时减少错误。 安装Jenkins 下载地址，选择 linux-x64.tar.gz 包，下载需">
+<meta name="twitter:image" content="http://qyhever.top/2018/12/16/jenkins自动部署/jenkins-home.jpg">
 
 
 
@@ -128,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://qyhever.top/archives/2017/11/"/>
+  <link rel="canonical" href="http://qyhever.top/2018/12/16/jenkins自动部署/"/>
 
 
 
 
 
-  <title>归档 | 正在缓冲99%</title>
+  <title>jenkins自动部署 | 正在缓冲99%</title>
   
 
 
@@ -158,7 +164,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <!-- <div class="headband"></div> -->
     <!-- <a href="https://github.com/qyhever"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a> -->
     <a href="https://github.com/qyhever" class="github-corner" aria-label="View source on Github"><svg width="92" height="92" viewBox="0 0 250 250" style="fill:#151513;color:#fff;position:absolute;top:0;border:0;right:0" aria-hidden="true"><path d="M0 0 115 115 130 115 142 142 250 250 250 0Z"></path><path d="M128.3 109C113.8 99.7 119 89.6 119 89.6 122 82.7 120.5 78.6 120.5 78.6 119.2 72 123.4 76.3 123.4 76.3 127.3 80.9 125.5 87.3 125.5 87.3 122.9 97.6 130.6 101.9 134.4 103.2" fill="currentColor" style="transform-origin:130px 106px" class="octo-arm"></path><path d="M115 115C114.9 115.1 118.7 116.5 119.8 115.4L133.7 101.6C136.9 99.2 139.9 98.4 142.2 98.6 133.8 88 127.5 74.4 143.8 58 148.5 53.4 154 51.2 159.7 51 160.3 49.4 163.2 43.6 171.4 40.1 171.4 40.1 176.1 42.5 178.8 56.2 183.1 58.6 187.2 61.8 190.9 65.4 194.5 69 197.7 73.2 200.1 77.6 213.8 80.2 216.3 84.9 216.3 84.9 212.7 93.1 206.9 96 205.4 96.6 205.1 102.4 203 107.8 198.3 112.5 181.9 128.9 168.3 122.5 157.7 114.1 157.9 116.9 156.7 120.9 152.7 124.9L141 136.5C139.8 137.7 141.6 141.9 141.8 141.8Z" fill="currentColor" class="octo-body"></path></svg></a>
@@ -276,111 +282,278 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 30 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2017">2017</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qyhever.top/2018/12/16/jenkins自动部署/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="pink">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="正在缓冲99%">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/11/29/关于javascript的继承/" itemprop="url">
-              
-                <span itemprop="name">关于javascript的继承</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">jenkins自动部署</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-29T21:40:59+08:00"
-              content="2017-11-29" >
-          11-29
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-16T01:44:19+08:00">
+                2018-12-16
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/环境配置/" itemprop="url" rel="index">
+                    <span itemprop="name">环境配置</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  701 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/11/15/对象浅拷贝与深拷贝/" itemprop="url">
-              
-                <span itemprop="name">对象浅拷贝与深拷贝</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-15T20:42:51+08:00"
-              content="2017-11-15" >
-          11-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
+      
+        <h3 id="Jenkins"><a href="#Jenkins" class="headerlink" title="Jenkins"></a>Jenkins</h3><p>jenkins 是一个开源软件项目，是基于 java 开发的一种持续集成工具，用于监控持续重复的工作，旨在提供一个开放易用的软件平台，使软件的持续集成变成可能。</p>
+<p>在开发过程中，打包上线一直都是手动命令，上传到服务器，效率低也很容易出错。可以使用 Jenkins 把打包过程自动化，提高效率，同时减少错误。</p>
+<h3 id="安装Jenkins"><a href="#安装Jenkins" class="headerlink" title="安装Jenkins"></a>安装Jenkins</h3><ul>
+<li><p><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">下载地址</a>，选择 linux-x64.tar.gz 包，下载需要勾选 Accept License Agreement</p>
+</li>
+<li><p>点击下载会下载到本地，下载完成后，上传到服务器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp jdk-8u171-linux-x64.tar.gz yourname@yourip:/usr/local/src</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解压</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf jdk-8u171-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置环境变量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 在文件末尾添加</span></span><br><span class="line">export JAVA_HOME=/usr/local/src/jdk1.8.0_191</span><br><span class="line">export JRE_HOME=$JAVA_HOME/jre</span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 立即生效</span></span><br><span class="line">source /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加软连接</span></span><br><span class="line">ln -s /usr/local/src/jdk1.8.0_191/bin/java /usr/bin/java</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 检测版本</span></span><br><span class="line">java --version</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo</span><br><span class="line">rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysconfig/jenkins</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 端口</span></span><br><span class="line">JENKINS_PORT="8080"</span><br><span class="line"><span class="meta">#</span><span class="bash"> 用户</span></span><br><span class="line">JENKINS_USER="root"</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改目录权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chown -R root:root /var/lib/jenkins</span><br><span class="line">chown -R root:root /var/cache/jenkins</span><br><span class="line">chown -R root:root /var/log/jenkins</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start jenkins</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问</p>
+<ul>
+<li><p>访问 <a href="http://yourip:8080" target="_blank" rel="noopener">http://yourip:8080</a></p>
+<p>要求输入管理员密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /var/lib/jenkins/secrets/initialAdminPassword</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>按照提示安装推荐插件</p>
+</li>
+<li><p>创建管理员用户</p>
+</li>
+</ul>
+<p>​</p>
+</li>
+</ul>
+<h3 id="创建任务"><a href="#创建任务" class="headerlink" title="创建任务"></a>创建任务</h3><p>走完上面的步骤后，现在已经到了 jenkins 的主页面了</p>
+<p><img src="./jenkins-home.jpg" alt="jenkins-home"></p>
+<p>点击左侧新建任务，输入任务名称，选择 构建一个多配置项目，根据需要可选择其他选项</p>
+<p><img src="./jenkins-create-task.jpg" alt="jenkins-create-task"></p>
+<p>点击确定到达配置页面</p>
+<p>如果我们不使用自动部署，一般打包上线都是以下过程</p>
+<ul>
+<li>本地提交代码</li>
+<li>服务器拉取最新代码</li>
+<li>服务器运行打包命令<code>npm run build</code></li>
+<li>将打包生成的 dist 目录移动到 静态服务器（nginx）目录下</li>
+</ul>
+<p>或者</p>
+<ul>
+<li>本地直接运行打包命令</li>
+<li>将打包生成的 dist 目录上传到 静态服务器（nginx）目录下</li>
+</ul>
+<p>自动部署我们使用第一种的流程，配置之前确保服务器安装了 git，能拉取代码</p>
+<p>下面是配置示例</p>
+<p><img src="./jenkins-task-config.png" alt="jenkins-task-config"></p>
+<p>配置完成后，在面板右侧会出现任务列表，点击任务进去，点击左侧的立即构建，即可完成自动部署。</p>
+<p>可能出现的问题：</p>
+<ul>
+<li>git 拉取代码要配置 ssh</li>
+<li>node npm 命令可能会找不到，此类问题可以建立软连接<code>ln -s yournodepath /usr/bin/node</code></li>
+</ul>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:17px;">------------- 本文结束<i class="fa fa-paw"></i>感谢您的阅读 -------------</div>
+    
+</div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/环境配置/" rel="tag">
+              <i class="fa fa-tag"></i>
+              环境配置
+            </a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/28/pm2自动部署node项目/" rel="next" title="pm2自动部署node项目">
+                <i class="fa fa-chevron-left"></i> pm2自动部署node项目
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -388,6 +561,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -408,8 +585,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -563,6 +749,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Jenkins"><span class="nav-number">1.</span> <span class="nav-text">Jenkins</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Jenkins"><span class="nav-number">2.</span> <span class="nav-text">安装Jenkins</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建任务"><span class="nav-number">3.</span> <span class="nav-text">创建任务</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -713,6 +915,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
