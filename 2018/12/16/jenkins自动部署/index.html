@@ -89,13 +89,13 @@
 
 
 
-<meta name="description" content="Jenkinsjenkins 是一个开源软件项目，是基于 java 开发的一种持续集成工具，用于监控持续重复的工作，旨在提供一个开放易用的软件平台，使软件的持续集成变成可能。 在开发过程中，打包上线一直都是手动命令，上传到服务器，效率低也很容易出错。可以使用 Jenkins 把打包过程自动化，提高效率，同时减少错误。 安装Jenkins 下载地址，选择 linux-x64.tar.gz 包，下载需">
+<meta name="description" content="Jenkinsjenkins 是一个开源软件项目，是基于 java 开发的一种持续集成工具，用于监控持续重复的工作，旨在提供一个开放易用的软件平台，使软件的持续集成变成可能。 在开发过程中，打包上线一直都是手动命令，上传到服务器，效率低也很容易出错。可以使用 Jenkins 把打包过程自动化，提高效率，同时减少错误。 安装安装 jdk jenkins 需要 java 环境，首先安装 jdk   下">
 <meta name="keywords" content="环境配置">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jenkins自动部署">
 <meta property="og:url" content="http://qyhever.top/2018/12/16/jenkins自动部署/index.html">
 <meta property="og:site_name" content="正在缓冲99%">
-<meta property="og:description" content="Jenkinsjenkins 是一个开源软件项目，是基于 java 开发的一种持续集成工具，用于监控持续重复的工作，旨在提供一个开放易用的软件平台，使软件的持续集成变成可能。 在开发过程中，打包上线一直都是手动命令，上传到服务器，效率低也很容易出错。可以使用 Jenkins 把打包过程自动化，提高效率，同时减少错误。 安装Jenkins 下载地址，选择 linux-x64.tar.gz 包，下载需">
+<meta property="og:description" content="Jenkinsjenkins 是一个开源软件项目，是基于 java 开发的一种持续集成工具，用于监控持续重复的工作，旨在提供一个开放易用的软件平台，使软件的持续集成变成可能。 在开发过程中，打包上线一直都是手动命令，上传到服务器，效率低也很容易出错。可以使用 Jenkins 把打包过程自动化，提高效率，同时减少错误。 安装安装 jdk jenkins 需要 java 环境，首先安装 jdk   下">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://blog.qyhever.com/jenkins-home.jpg">
 <meta property="og:image" content="http://blog.qyhever.com/jenkins-create-task.jpg">
@@ -103,7 +103,7 @@
 <meta property="og:updated_time" content="2019-02-18T15:49:14.407Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jenkins自动部署">
-<meta name="twitter:description" content="Jenkinsjenkins 是一个开源软件项目，是基于 java 开发的一种持续集成工具，用于监控持续重复的工作，旨在提供一个开放易用的软件平台，使软件的持续集成变成可能。 在开发过程中，打包上线一直都是手动命令，上传到服务器，效率低也很容易出错。可以使用 Jenkins 把打包过程自动化，提高效率，同时减少错误。 安装Jenkins 下载地址，选择 linux-x64.tar.gz 包，下载需">
+<meta name="twitter:description" content="Jenkinsjenkins 是一个开源软件项目，是基于 java 开发的一种持续集成工具，用于监控持续重复的工作，旨在提供一个开放易用的软件平台，使软件的持续集成变成可能。 在开发过程中，打包上线一直都是手动命令，上传到服务器，效率低也很容易出错。可以使用 Jenkins 把打包过程自动化，提高效率，同时减少错误。 安装安装 jdk jenkins 需要 java 环境，首先安装 jdk   下">
 <meta name="twitter:image" content="http://blog.qyhever.com/jenkins-home.jpg">
 
 
@@ -379,7 +379,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  701 字
+                  721 字
                 </span>
               
 
@@ -418,7 +418,10 @@
       
         <h3 id="Jenkins"><a href="#Jenkins" class="headerlink" title="Jenkins"></a>Jenkins</h3><p>jenkins 是一个开源软件项目，是基于 java 开发的一种持续集成工具，用于监控持续重复的工作，旨在提供一个开放易用的软件平台，使软件的持续集成变成可能。</p>
 <p>在开发过程中，打包上线一直都是手动命令，上传到服务器，效率低也很容易出错。可以使用 Jenkins 把打包过程自动化，提高效率，同时减少错误。</p>
-<h3 id="安装Jenkins"><a href="#安装Jenkins" class="headerlink" title="安装Jenkins"></a>安装Jenkins</h3><ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="安装-jdk"><a href="#安装-jdk" class="headerlink" title="安装 jdk"></a>安装 jdk</h4><ul>
+<li>jenkins 需要 java 环境，首先安装 jdk</li>
+</ul>
+<ul>
 <li><p><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">下载地址</a>，选择 linux-x64.tar.gz 包，下载需要勾选 Accept License Agreement</p>
 </li>
 <li><p>点击下载会下载到本地，下载完成后，上传到服务器</p>
@@ -430,8 +433,10 @@
 <li><p>配置环境变量</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 在文件末尾添加</span></span><br><span class="line">export JAVA_HOME=/usr/local/src/jdk1.8.0_191</span><br><span class="line">export JRE_HOME=$JAVA_HOME/jre</span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 立即生效</span></span><br><span class="line">source /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加软连接</span></span><br><span class="line">ln -s /usr/local/src/jdk1.8.0_191/bin/java /usr/bin/java</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 检测版本</span></span><br><span class="line">java --version</span><br></pre></td></tr></table></figure>
 </li>
+</ul>
+<h4 id="安装-jenkins"><a href="#安装-jenkins" class="headerlink" title="安装 jenkins"></a>安装 jenkins</h4><ul>
 <li><p>安装</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo</span><br><span class="line">rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo</span><br><span class="line">rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key</span><br><span class="line">yum install jenkins</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>修改配置文件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysconfig/jenkins</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 端口</span></span><br><span class="line">JENKINS_PORT="8080"</span><br><span class="line"><span class="meta">#</span><span class="bash"> 用户</span></span><br><span class="line">JENKINS_USER="root"</span><br></pre></td></tr></table></figure>
@@ -758,7 +763,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Jenkins"><span class="nav-number">1.</span> <span class="nav-text">Jenkins</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Jenkins"><span class="nav-number">2.</span> <span class="nav-text">安装Jenkins</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建任务"><span class="nav-number">3.</span> <span class="nav-text">创建任务</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Jenkins"><span class="nav-number">1.</span> <span class="nav-text">Jenkins</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装-jdk"><span class="nav-number">2.1.</span> <span class="nav-text">安装 jdk</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装-jenkins"><span class="nav-number">2.2.</span> <span class="nav-text">安装 jenkins</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建任务"><span class="nav-number">3.</span> <span class="nav-text">创建任务</span></a></li></ol></div>
             
 
           </div>
